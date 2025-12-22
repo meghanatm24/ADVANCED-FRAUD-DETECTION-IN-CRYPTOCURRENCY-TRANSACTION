@@ -1,0 +1,248 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/* IEEE Academic Paper Design System - Professional Research Interface */
+
+@import url('https://fonts.googleapis.com/css2?family=Crimson+Text:ital,wght@0,400;0,600;1,400&family=Source+Sans+Pro:wght@400;600;700&display=swap');
+
+@layer base {
+  :root {
+    /* Academic Color Palette */
+    --background: 0 0% 99%;
+    --foreground: 220 13% 18%;
+
+    --card: 0 0% 100%;
+    --card-foreground: 220 13% 18%;
+
+    --popover: 0 0% 100%;
+    --popover-foreground: 220 13% 18%;
+
+    /* IEEE Blue Theme */
+    --primary: 214 84% 35%;
+    --primary-foreground: 0 0% 98%;
+    --primary-light: 214 84% 45%;
+    --primary-dark: 214 84% 25%;
+
+    --secondary: 220 14% 96%;
+    --secondary-foreground: 220 13% 18%;
+
+    --muted: 220 14% 96%;
+    --muted-foreground: 220 9% 46%;
+
+    --accent: 214 32% 91%;
+    --accent-foreground: 214 84% 35%;
+
+    --destructive: 0 84% 60%;
+    --destructive-foreground: 0 0% 98%;
+
+    --border: 220 13% 91%;
+    --input: 220 13% 91%;
+    --ring: 214 84% 35%;
+
+    /* Academic Typography */
+    --font-heading: 'Source Sans Pro', sans-serif;
+    --font-body: 'Crimson Text', serif;
+    --font-mono: 'Courier New', monospace;
+
+    /* Professional Spacing */
+    --spacing-section: 2rem;
+    --spacing-paragraph: 1rem;
+    --spacing-line: 1.6;
+
+    /* Academic Shadows & Effects */
+    --shadow-paper: 0 4px 20px hsla(220, 13%, 18%, 0.08);
+    --shadow-card: 0 2px 10px hsla(220, 13%, 18%, 0.06);
+    --gradient-header: linear-gradient(135deg, hsl(var(--primary)), hsl(var(--primary-light)));
+    --gradient-subtle: linear-gradient(180deg, hsl(var(--background)), hsl(var(--secondary)));
+
+    /* IEEE Layout */
+    --column-width: 45%;
+    --column-gap: 5%;
+    --page-margin: 2rem;
+
+    --radius: 0.5rem;
+
+    --sidebar-background: 0 0% 98%;
+
+    --sidebar-foreground: 240 5.3% 26.1%;
+
+    --sidebar-primary: 240 5.9% 10%;
+
+    --sidebar-primary-foreground: 0 0% 98%;
+
+    --sidebar-accent: 240 4.8% 95.9%;
+
+    --sidebar-accent-foreground: 240 5.9% 10%;
+
+    --sidebar-border: 220 13% 91%;
+
+    --sidebar-ring: 217.2 91.2% 59.8%;
+  }
+
+  .dark {
+    --background: 222.2 84% 4.9%;
+    --foreground: 210 40% 98%;
+
+    --card: 222.2 84% 4.9%;
+    --card-foreground: 210 40% 98%;
+
+    --popover: 222.2 84% 4.9%;
+    --popover-foreground: 210 40% 98%;
+
+    --primary: 210 40% 98%;
+    --primary-foreground: 222.2 47.4% 11.2%;
+
+    --secondary: 217.2 32.6% 17.5%;
+    --secondary-foreground: 210 40% 98%;
+
+    --muted: 217.2 32.6% 17.5%;
+    --muted-foreground: 215 20.2% 65.1%;
+
+    --accent: 217.2 32.6% 17.5%;
+    --accent-foreground: 210 40% 98%;
+
+    --destructive: 0 62.8% 30.6%;
+    --destructive-foreground: 210 40% 98%;
+
+    --border: 217.2 32.6% 17.5%;
+    --input: 217.2 32.6% 17.5%;
+    --ring: 212.7 26.8% 83.9%;
+    --sidebar-background: 240 5.9% 10%;
+    --sidebar-foreground: 240 4.8% 95.9%;
+    --sidebar-primary: 224.3 76.3% 48%;
+    --sidebar-primary-foreground: 0 0% 100%;
+    --sidebar-accent: 240 3.7% 15.9%;
+    --sidebar-accent-foreground: 240 4.8% 95.9%;
+    --sidebar-border: 240 3.7% 15.9%;
+    --sidebar-ring: 217.2 91.2% 59.8%;
+  }
+}
+
+@layer base {
+  * {
+    @apply border-border;
+  }
+
+  body {
+    @apply bg-background text-foreground;
+    font-family: var(--font-body);
+    line-height: var(--spacing-line);
+  }
+
+  /* IEEE Academic Typography */
+  h1, h2, h3, h4, h5, h6 {
+    font-family: var(--font-heading);
+    font-weight: 600;
+    color: hsl(var(--primary-dark));
+  }
+
+  h1 { font-size: 1.8rem; margin-bottom: 0.5rem; }
+  h2 { font-size: 1.4rem; margin-bottom: 0.4rem; text-transform: uppercase; letter-spacing: 0.5px; }
+  h3 { font-size: 1.2rem; margin-bottom: 0.3rem; }
+  h4 { font-size: 1.1rem; margin-bottom: 0.3rem; }
+
+  /* Academic Paper Layout */
+  .ieee-paper {
+    max-width: 1200px;
+    margin: 0 auto;
+    background: hsl(var(--card));
+    box-shadow: var(--shadow-paper);
+    border-radius: 8px;
+    overflow: hidden;
+  }
+
+  .ieee-header {
+    background: var(--gradient-header);
+    color: hsl(var(--primary-foreground));
+    padding: 2rem;
+    text-align: center;
+  }
+
+  .ieee-columns {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 2rem;
+    padding: 2rem;
+    font-size: 0.95rem;
+    text-align: justify;
+    line-height: 1.6;
+  }
+
+  .ieee-section {
+    margin-bottom: var(--spacing-section);
+  }
+
+  .ieee-abstract {
+    grid-column: 1 / -1;
+    background: hsl(var(--accent));
+    padding: 1.5rem;
+    border-radius: 6px;
+    font-style: italic;
+    border-left: 4px solid hsl(var(--primary));
+  }
+
+  .ieee-keywords {
+    grid-column: 1 / -1;
+    margin-bottom: 2rem;
+    font-weight: 600;
+  }
+
+  /* Citations and References */
+  .citation {
+    color: hsl(var(--primary));
+    font-weight: 600;
+  }
+
+  .reference-list {
+    font-size: 0.85rem;
+    line-height: 1.4;
+  }
+
+  /* Figures and Tables */
+  .figure-caption, .table-caption {
+    font-size: 0.85rem;
+    font-weight: 600;
+    text-align: center;
+    margin: 0.5rem 0;
+    color: hsl(var(--muted-foreground));
+  }
+
+  .ieee-table {
+    width: 100%;
+    border-collapse: collapse;
+    margin: 1rem 0;
+    font-size: 0.85rem;
+  }
+
+  .ieee-table th,
+  .ieee-table td {
+    border: 1px solid hsl(var(--border));
+    padding: 0.5rem;
+    text-align: center;
+  }
+
+  .ieee-table th {
+    background: hsl(var(--muted));
+    font-weight: 600;
+  }
+
+  /* Mathematical Equations */
+  .equation {
+    text-align: center;
+    margin: 1rem 0;
+    font-family: var(--font-mono);
+    background: hsl(var(--secondary));
+    padding: 0.8rem;
+    border-radius: 4px;
+  }
+
+  /* Responsive Design */
+  @media (max-width: 768px) {
+    .ieee-columns {
+      grid-template-columns: 1fr;
+      gap: 1rem;
+      padding: 1rem;
+    }
+  }
+}
