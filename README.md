@@ -1,73 +1,39 @@
-# Welcome to your Lovable project
+# Crypto Fraud Detection — Combined (Backend + Pretrained ML)
 
-## Project info
+This bundle contains:
+- FastAPI backend (`app.py`) with endpoints:
+  - `GET /health`
+  - `GET /api/analyze/{address}`
+- A **pretrained supervised model** at `ml/model.joblib` (trained on synthetic data)
+- Scripts to regenerate data & retrain: `ml/generate_synthetic.py`, `ml/train_model.py`
 
-**URL**: https://lovable.dev/projects/18e65a78-f420-4971-a0b9-e31e07768bbd
-
-## How can I edit this code?
-
-There are several ways of editing your application.
-
-**Use Lovable**
-
-Simply visit the [Lovable Project](https://lovable.dev/projects/18e65a78-f420-4971-a0b9-e31e07768bbd) and start prompting.
-
-Changes made via Lovable will be committed automatically to this repo.
-
-**Use your preferred IDE**
-
-If you want to work locally using your own IDE, you can clone this repo and push changes. Pushed changes will also be reflected in Lovable.
-
-The only requirement is having Node.js & npm installed - [install with nvm](https://github.com/nvm-sh/nvm#installing-and-updating)
-
-Follow these steps:
-
-```sh
-# Step 1: Clone the repository using the project's Git URL.
-git clone <YOUR_GIT_URL>
-
-# Step 2: Navigate to the project directory.
-cd <YOUR_PROJECT_NAME>
-
-# Step 3: Install the necessary dependencies.
-npm i
-
-# Step 4: Start the development server with auto-reloading and an instant preview.
-npm run dev
+## Run (local)
+```bash
+python -m venv .venv
+# Windows: .venv\Scripts\activate
+# macOS/Linux:
+source .venv/bin/activate
+pip install -r requirements.txt
+cp .env.example .env
+# set ETHERSCAN_API_KEY and ALLOWED_ORIGIN (e.g., http://localhost:8080)
+uvicorn app:app --reload --port 8000
 ```
 
-**Edit a file directly in GitHub**
+Test:
+- http://localhost:8000/health
+- http://localhost:8000/api/analyze/0xd8dA6BF26964aF9D7eEd9e03E53415D37aA96045
 
-- Navigate to the desired file(s).
-- Click the "Edit" button (pencil icon) at the top right of the file view.
-- Make your changes and commit the changes.
+## Retrain (optional)
+```bash
+python ml/generate_synthetic.py
+python ml/train_model.py
+```
+This overwrites `ml/model.joblib`, which the API will auto-load.
 
-**Use GitHub Codespaces**
 
-- Navigate to the main page of your repository.
-- Click on the "Code" button (green button) near the top right.
-- Select the "Codespaces" tab.
-- Click on "New codespace" to launch a new Codespace environment.
-- Edit files directly within the Codespace and commit and push your changes once you're done.
+<!-- ETH: 0xd8dA6BF26964aF9D7eEd9e03E53415D37aA96045 -->
+<!-- ETH: 0x742d35Cc6634C0532925a3b844Bc454e4438f44e -->
+<!-- BTC: bc1qxy2kgdygjrsqtzq2n0yrf2493p83kkfjhx0wlh -->
+<!-- ETH: 0x53d284357ec70ce289d6d64134dfac8e511c8a3d -->
 
-## What technologies are used for this project?
-
-This project is built with:
-
-- Vite
-- TypeScript
-- React
-- shadcn-ui
-- Tailwind CSS
-
-## How can I deploy this project?
-
-Simply open [Lovable](https://lovable.dev/projects/18e65a78-f420-4971-a0b9-e31e07768bbd) and click on Share -> Publish.
-
-## Can I connect a custom domain to my Lovable project?
-
-Yes, you can!
-
-To connect a domain, navigate to Project > Settings > Domains and click Connect Domain.
-
-Read more here: [Setting up a custom domain](https://docs.lovable.dev/features/custom-domain#custom-domain)
+<!-- argon database using sqlite -->

@@ -1,24 +1,85 @@
-# Logs
-logs
-*.log
+# Node
+node_modules/
 npm-debug.log*
 yarn-debug.log*
 yarn-error.log*
 pnpm-debug.log*
-lerna-debug.log*
 
-node_modules
-dist
-dist-ssr
-*.local
+# Build / output
+dist/
+build/
+out/
+.cache/
+.nyc_output/
+coverage/
+coverage-final.json
+*.tsbuildinfo
 
-# Editor directories and files
-.vscode/*
-!.vscode/extensions.json
-.idea
+# Environment / secrets
+.env
+.env.local
+.env.*.local
+.env.test
+.env.production
+.envrc
+*.key
+*.pem
+*.crt
+*.enc
+secrets.*
+credentials.json
+service-account*.json
+
+# Logs
+logs/
+*.log
+*.log.*
+debug.log
+pids/
+*.pid
+*.pid.lock
+
+# OS files
 .DS_Store
+Thumbs.db
+desktop.ini
+
+# IDEs and editors
+.vscode/
+.idea/
 *.suo
 *.ntvs*
 *.njsproj
 *.sln
 *.sw?
+*.sublime-workspace
+*.sublime-project
+
+# Python (if present)
+venv/
+ENV/
+env/
+__pycache__/
+*.pyc
+*.pyo
+*.pyd
+
+# Databases
+*.sqlite
+*.sqlite3
+*.db
+
+# Docker
+docker-compose.override.yml
+docker-compose.*.local.yml
+
+# Misc
+bower_components/
+npm-debug.log
+.yarn-integrity
+.pnpm-store/
+*.seed
+
+# Optional: ignore local config files
+.local
+*.local
